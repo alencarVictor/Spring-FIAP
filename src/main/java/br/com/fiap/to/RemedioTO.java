@@ -1,18 +1,24 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
 public class RemedioTO {
-    private long codigo; //long é o tipo de atributo para inteiros grandes
+    private Long codigo; //long é o tipo de atributo para inteiros grandes
+    @NotBlank
     private String nome;
+    @NotNull @PositiveOrZero
     private Double preco;
+    @PastOrPresent
     private LocalDate dataDeFabricacao;
+    @FutureOrPresent
     private LocalDate dataDeValidade;
 
     //construtores
     public RemedioTO (){}
 
-    public RemedioTO(long codigo, String nome, Double preco, LocalDate dataDeFabricacao, LocalDate dataDeValidade) {
+    public RemedioTO(Long codigo, String nome, Double preco, LocalDate dataDeFabricacao, LocalDate dataDeValidade) {
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
@@ -20,7 +26,7 @@ public class RemedioTO {
         this.dataDeValidade = dataDeValidade;
     }
 
-    public long getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
