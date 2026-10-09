@@ -51,4 +51,13 @@ public class RemedioResource {
         }
     }
 
+    @DeleteMapping("/{codigo}")
+    public ResponseEntity<String> delete (@PathVariable Long codigo){
+        if(remedioBO.delete(codigo)){
+            return  ResponseEntity.status(HttpStatus.NO_CONTENT).body("Remédio deletado com sucesso!");
+        }else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Remédio não encontrado!");
+        }
+    }
+
 }
